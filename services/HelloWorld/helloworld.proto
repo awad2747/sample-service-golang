@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package helloworld;
 
-option go_package = "github.com/awad2747/sample-service-golang/helloworld";
+option go_package = "github.com/awad2747/sample-service-golang-proto-client/helloworld";
 
 service Greeter {
   // Sends a greeting

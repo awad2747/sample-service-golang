@@ -2,12 +2,12 @@ module github.com/awad2747/sample-service-golang
 
 go 1.23.0
 
-replace github.com/awad2747/sample-service-golang/helloworld => ./proto/github.com/awad2747/sample-service-golang/helloworld
+replace github.com/awad2747/sample-service-golang-proto-client/helloworld => ./proto/github.com/awad2747/sample-service-golang-proto-client/helloworld
 
 require (
+	github.com/awad2747/sample-service-golang-proto-client v0.0.0-20240826132541-cd9a78e76e8b
 	google.golang.org/grpc v1.65.0
 	google.golang.org/protobuf v1.34.1
-	github.com/awad2747/sample-service-golang/helloworld master
 )
 
 require (
