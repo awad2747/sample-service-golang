@@ -23,3 +23,15 @@ clean:
 	rm -rf $(OUT_DIR)
 
 .PHONY: compile_protos clean
+
+compose-up:
+	docker compose build --no-cache
+	docker compose -f docker-compose.yml up -d
+
+compose-down:
+	docker compose -f docker-compose.yml down --rmi all
+	docker image prune -a
+
+start: compose-down compile_protos compose-up
+
+
