@@ -9,6 +9,7 @@ import (
 
 	helloworldproto "github.com/awad2747/sample-service-golang-proto-client/helloworld"
 	"google.golang.org/grpc"
+	"net/http"
 )
 
 // Unary interceptors
@@ -32,7 +33,24 @@ func (s *GreeterServer) SayHello(ctx context.Context, req *helloworldproto.Hello
 	}, nil
 }
 
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello, World!")
+}
+
 func main() {
+
+	// run http server
+	http.HandleFunc("/", handler)
+
+	go func() {
+		err := http.ListenAndServe(":80", nil)
+		if err != nil {
+			fmt.Println("Error starting server:", err)
+		}
+		if err == nil {
+			fmt.Println("starting http server on 80", err)
+		}
+	}()
 
 	// Create a TCP listener on port 50051
 	lis, err := net.Listen(

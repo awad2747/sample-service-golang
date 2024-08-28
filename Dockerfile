@@ -21,7 +21,8 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o sample-service-golang .
 
 # Expose port 50051 to the outside world
-EXPOSE 50051
+EXPOSE 50051 
+EXPOSE 80
 
 # Command to run the application when starting the container
 CMD ["/app/sample-service-golang"]
